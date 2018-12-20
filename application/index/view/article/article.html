@@ -1,0 +1,70 @@
+{layout name='layout' /}
+		<link href="__PUBLIC__/style/lady.css" type="text/css" rel="stylesheet" />
+    </head>
+
+    <body>
+
+        <!--顶部通栏-->
+
+        <div class="position"><a href='{:url('index/index')}'>主页</a> > <a href='{:url("cate/index?cateid=".$cn.id)}'>{$cn.catename}</a> >  </div>
+
+        <div class="overall">
+            <div class="left">
+                <div class="scrap">
+                    <h1>{$art.title}</h1>
+                    <div class="spread">
+                        <span class="writor">发布时间：{$art.time|date='Y-m-d',###}</span>
+                        <span class="writor">编辑：{$art.author}</span>
+                        <span class="writor">标签：<?php
+				 $attr = explode(',',$art['keywords']);
+				 foreach ($attr as $k=>$v2){
+					echo "<a href=''>$v2</a>";};?></span>
+                        <span class="writor">热度：{$art.click}<script src="/jiehun/plus/count.php?view=yes&aid=156214&mid=55" type='text/javascript' language="javascript"></script></span>
+                    </div>
+                </div>
+
+                <!--百度分享-->
+
+                <div class="takeaway">
+                    <span class="btn arr-left"></span>
+                    <p class="jjxq">{$art.desc}
+</p>
+                    <span class="btn arr-right"></span>
+                </div>
+
+
+                <div class="substance">{$art.content}</div>
+
+
+                <div class="biaoqian">
+                   
+                </div>
+
+
+
+                <!--相关阅读 -->
+                <div class="xgread">
+                    <div class="til"><h4>相关阅读</h4></div>
+                    <div class="rig">
+                        <ul>
+                            {volist name='ls' id='c'}
+                            <li><a href='{:url("article/index?id=".$c.id)}' target="_blank">{$c.title}</a></li>
+                            {/volist}
+                        </ul>
+                    </div>
+                </div>
+
+                <!--频道推荐-->
+                <div class="hotsnew">
+                    <div class="til"><h4>频道推荐</h4></div>
+                    <ul>
+                        {volist name='tj' id='v'}
+                        <li><div class="tu"><a href='{:url('article/index?id='.$v.id)}' target="_blank"><img src="__IMG__{$v.pic}" alt=""/></a></div><p><a href='__PUBLIC__/images/20160920156214.html'>{$v.title}</a></p></li>
+                        {/volist}
+                    </ul>
+                </div>		
+            </div>
+
+            {include file='common/right'}
+    
+</div>

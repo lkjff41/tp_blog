@@ -1,0 +1,20 @@
+
+<div class="ladytop">
+    <div class="nav">
+        <div class="left"><a href="{:url('index/index')}"><img src="__PUBLIC__/images/hunshang.png" alt=""></a></div>
+        <div class="right">
+            <div class="box">
+                <a href="{:url('index/index')}"  rel='dropmenu209'>首页</a>
+                {volist name='cate' id='v'}
+                <a href="{:url('cate/index?cateid='.$v['id'])}"  rel='dropmenu209'>{$v.catename}</a>
+                {/volist}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hotmenu"><div class="con">热门标签：
+    {volist name='tag' id='v1'}
+    <a href='http://www.tp5.com/index.php/index/search/index?keywords={$v1['tagname']}'>{$v1['tagname']}</a>
+    {/volist}  </div>
+</div>
